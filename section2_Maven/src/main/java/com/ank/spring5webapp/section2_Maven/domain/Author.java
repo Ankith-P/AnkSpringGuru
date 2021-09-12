@@ -32,11 +32,11 @@ public class Author {
 	public Author() {
 		//super();
 	}
-	public Author(String firstName, String lastName, Set<Book> books) {
+	public Author(String firstName, String lastName) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.books = books;
+		//this.books = books;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -55,6 +55,26 @@ public class Author {
 	}
 	public void setBooks(Set<Book> books) {
 		this.books = books;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Author other = (Author) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 	
 	
