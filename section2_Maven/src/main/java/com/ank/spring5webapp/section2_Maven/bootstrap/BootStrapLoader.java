@@ -37,23 +37,35 @@ public class BootStrapLoader implements CommandLineRunner{
 		Book book2=new Book("J2EE Development without EJB","1PI10IS28");
 		
 		authorRepository.save(author1);
-		authorRepository.save(author2);
-		
-
-		
 		bookRepository.save(book1);
+		authorRepository.save(author2);
 		bookRepository.save(book2);
+		book1.getAuthors().add(author1);
+		book1.getAuthors().add(author2);	
+		bookRepository.save(book1);
+		
+		book2.getAuthors().add(author1);
+		book2.getAuthors().add(author2);	
+		bookRepository.save(book2);
+		
+		author1.getBooks().add(book1);
+		author1.getBooks().add(book2);
+		
+		author2.getBooks().add(book2);
+		author2.getBooks().add(book1);
+		
+		authorRepository.save(author1);
+		authorRepository.save(author2);
 		
 		Publisher publisher =new Publisher("Sapna Book House","Sapna is popular book house in India");
 		publisher.getBooks().add(book1);
 		publisher.getBooks().add(book2);
-		
-
-		bookRepository.save(book1);
-		bookRepository.save(book2);
+		//bookRepository.save(book1);
+		//bookRepository.save(book2);
 		publisherRepository.save(publisher);
 		book1.setPublisher(publisher);
 		book2.setPublisher(publisher);
+		
 		System.out.println("printing in memory book and author details");
 		System.out.println(authorRepository.count());
 		System.out.println(bookRepository.count());

@@ -1,5 +1,6 @@
 package com.ank.spring5webapp.section2_Maven.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class Author {
 	private String firstName;
 	private String lastName;
 	@ManyToMany(mappedBy="authors")
-	private Set<Book> books;
+	private Set<Book> books=new HashSet<>();
 	
 	
 	public long getId() {
